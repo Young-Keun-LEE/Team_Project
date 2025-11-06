@@ -29,7 +29,7 @@
 
             <div class="design-card {{ 'owned' if is_owned else 'locked' }} {{ 'active' if is_active else '' }}">
                 <div class="thumbnail-placeholder">
-                    [썸네일]
+                    <img src="{{ design.thumbnail_url | default(url_for('static', filename='images/placeholder.png'), true) }}" alt="{{ design.name }}">
                 </div>
                 <h3>{{ design.name }}</h3>
                 <p>{{ design.description }}</p>

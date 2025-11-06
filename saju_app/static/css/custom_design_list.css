@@ -23,6 +23,11 @@
     color: #888;
     font-weight: bold;
 }
+.thumbnail-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 이미지가 잘리더라도 비율을 맞춰 꽉 채움 */
+}
 .design-card h3 {
     font-size: 1.2em;
     margin: 15px;
