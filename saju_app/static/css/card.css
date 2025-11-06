@@ -12,62 +12,72 @@
 }
 
 #card-deck h2 { font-size: 1.8em; }
-.deck-image-placeholder {
-    width: 200px; /* 카드 크기 확대 */
-    height: auto; /* 카드 크기 확대 */
-    background: #f8f8f8; /* 배경색 변경 */
-    border: 1px solid #ddd;
-    border-radius: 12px;
-    margin: 20px auto;
+/* #card-deck 내부 요소를 세로로 정렬 */
+#card-deck.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-top: 40px; /* 제목 위 여백 */
+    padding-bottom: 40px; /* 버튼 아래 여백 */
+}
+
+.central-button-wrapper {
+    margin-top: 30px;
+    text-align: center;
+}
+
+/* 새로운 중앙 버튼 (원형) */
+.central-draw-button {
+    width: 180px;  /* 크고 둥근 버튼 */
+    height: 180px;
+    border-radius: 50%; /* 원형 */
+    border: none;
+    background: linear-gradient(145deg, #D90429, #a8001d); /* My Destina 그라데이션 */
+    color: white;
+    font-size: 4.5em; /* 아이콘 크기 */
+    cursor: pointer;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 6px 15px rgba(0,0,0,0.1); /* 그림자 추가 */
-    overflow: hidden; /* 이미지 오버플로우 방지 */
-}
-.deck-card-image {
-    width: 100%;
-    height: auto;
-    display: block;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2), 
+                inset 0 5px 15px rgba(255,255,255,0.2); /* 입체감 있는 그림자 */
+    transition: all 0.3s ease-out;
 }
 
-.stylish-draw-button {
-    padding: 18px 45px; /* 패딩 증가 */
-    font-size: 1.4em; /* 폰트 크기 증가 */
-    font-weight: bold;
-    background: linear-gradient(135deg, #D90429 0%, #a8001d 100%); /* 더 깊은 그라데이션 */
+.central-draw-button i {
     color: white;
-    border: 3px solid #FFDDC4; /* 테두리 추가 (My Destina 테마에 어울리는 밝은 색) */
-    border-radius: 50px; /* pill 형태의 버튼 */
-    cursor: pointer;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3), 0 0 0 5px rgba(255,221,196,0.3); /* 깊은 그림자와 아웃라인 */
-    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1); /* 더 부드러운 전환 */
-    letter-spacing: 1.5px;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center; /* 내부 요소를 중앙 정렬 */
-    gap: 12px;
-    text-transform: uppercase;
-    text-shadow: 1px 1px 2px rgba(0,0,0,0.2); /* 텍스트 그림자 */
-    margin-top: 30px; /* 카드 덱 아래 여백 추가 */
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    /* 아이콘이 버튼 중앙에서 약간 흔들리는 애니메이션 (선택 사항) */
+    animation: pulse 2s infinite ease-in-out;
 }
 
-.stylish-draw-button i {
-    font-size: 1.3em;
-    color: #FFDDC4; /* 아이콘 색상도 테두리 색과 맞춤 */
+.central-draw-button:hover {
+    transform: translateY(-5px) scale(1.05); /* 떠오르는 효과 */
+    box-shadow: 0 15px 40px rgba(0,0,0,0.3), 
+                inset 0 7px 20px rgba(255,255,255,0.3);
 }
 
-.stylish-draw-button:hover {
-    background: linear-gradient(135deg, #a8001d 0%, #D90429 100%);
-    box-shadow: 0 15px 35px rgba(0,0,0,0.4), 0 0 0 8px rgba(255,221,196,0.5);
-    transform: translateY(-5px) scale(1.02); /* 더 과감한 호버 효과 */
+.central-draw-button:active {
+    transform: translateY(0) scale(1.0); /* 눌리는 효과 */
+    background: linear-gradient(145deg, #a8001d, #D90429);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2), 
+                inset 0 3px 10px rgba(0,0,0,0.1);
 }
 
-.stylish-draw-button:active {
-    transform: translateY(0);
-    box-shadow: 0 5px 10px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,221,196,0.2);
-    background: #a8001d;
-    border-color: #FFDDC4;
+/* 버튼 아래 설명 텍스트 */
+.button-description {
+    font-size: 1.1em;
+    color: #555;
+    margin-top: 25px;
+    font-weight: 500;
+}
+
+/* 아이콘 흔들림 애니메이션 (선택 사항) */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.08); }
+    100% { transform: scale(1); }
 }
 
 #card-effect p { color: #666; }
