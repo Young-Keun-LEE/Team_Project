@@ -44,7 +44,10 @@
                         <span id="result-color-text">퍼스널 컬러</span>
                     </div>
                     <div class="celebrity-circle">
-                        <img id="result-celeb-image" src="/static/images/default_celeb.png" alt="유명인" class="celeb-image">
+                    <img id="result-celeb-image" 
+                    src="{{ url_for('static', filename='images/celebrity/' + result.celebrity_image_filename) }}" 
+                    alt="{{ result.celebrity }}의 사진" 
+                    class="celeb-image">
                         <span id="result-celeb-text">유명인</span>
                     </div>
                 </div>

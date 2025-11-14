@@ -28,7 +28,16 @@ def card_generate():
     '카드 생성' 1단계 페이지를 렌더링합니다.
     (데이터 생성은 JS가 /api/generate_card로 요청)
     """
-    return render_template('card.html')
+    # 2. 현재 로그인한 사용자의 생년월일시로 사주 분석을 실행합니다.
+    analysis_data = analyze_saju(current_user.birth_datetime)
+
+    if analysis_data is None:
+        # 계산 실패 시 적절한 오류 페이지나 메시지 반환
+        return "사주 정보를 분석하는 데 실패했습니다. 관리자에게 문의하세요.", 500
+
+    # 3. 분석 결과(딕셔너리)를 'result'라는 이름으로 템플릿에 전달합니다.
+    return render_template('card.html', result=analysis_data)
+    # return render_template('card.html')
 
 @main_bp.route('/api/generate_card', methods=['POST'])
 @login_required

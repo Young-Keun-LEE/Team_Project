@@ -116,24 +116,24 @@ document.addEventListener('DOMContentLoaded', () => {
             // 4단계: JSON 데이터로 결과 카드 채우기
             // 상세 정보 업데이트
             detailedMbti.textContent = data.mbti || 'N/A';
-            detailedColor.textContent = data.personal_color || 'N/A';
+            detailedColor.textContent = data.color_name || 'N/A';
             detailedCeleb.textContent = data.celebrity || 'N/A';
 
             // 시각적 요소 업데이트
-            resultMbtiCircle.textContent = data.mbti || 'MBTI';
-            resultColorText.textContent = data.personal_color || '퍼스널 컬러';
+            resultMbtiCircle.textContent = data.mbti || 'MBTI'; 
+            resultColorText.textContent = data.personality_desc || '성향분석 중';
             resultCelebText.textContent = data.celebrity || '유명인';
 
             // 퍼스널 컬러 원형 배경색 설정 (API 응답에 personal_color_code가 있다고 가정)
-            if (data.personal_color_code) {
-                personalColorDisplay.style.backgroundColor = data.personal_color_code;
+            if (data.color_code) {
+                personalColorDisplay.style.backgroundColor = data.color_code;
             } else {
                 personalColorDisplay.style.backgroundColor = '#ccc'; // 기본 회색
             }
 
             // 유명인 이미지 설정 (API 응답에 celebrity_image_url이 있다고 가정)
-            if (data.celebrity_image_url) {
-                resultCelebImage.src = data.celebrity_image_url;
+            if (data.celebrity_image_filename) {
+                resultCelebImage.src = `/static/images/celebrity/${data.celebrity_image_filename}`;
             } else {
                 resultCelebImage.src = "/static/images/default_celeb.png";
             }
